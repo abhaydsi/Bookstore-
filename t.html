@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('G.jpg');
+            background-size: cover;
+            margin: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+        header {
+            background:rgba(255, 0, 0, 0.4);
+            color: darkcyan;
+            padding:0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%; 
+            max-width: 500px; 
+            display: flex;
+            justify-content: space-between;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 4px;
+            font-size: 13px;
+            border: none;
+            border-radius: 0px;
+        }
+        .search-bar button {
+            width: 20%;
+            padding: 3px;
+            font-size: 16px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius:0px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: red;
+        }
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 90%;
+            margin: 20px 0;
+        }
+        .book-item {
+            border: 3px solid green;
+            border-radius: 5px;
+            margin: 15px;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+             background: rgba(255, 69, 0, 0.6);
+        }
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: red;
+        }
+
+        nav {
+            background: rgba(0, 255, 255, 0.5);
+            color: white;
+            padding: 4px;
+            text-align: center;
+            width: 99%;
+        }
+        nav a {
+            color: black;
+            text-decoration: none;
+            margin: 17px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <br>
+         <h1><p style="letter-spacing: 30px;"> BOOKSTORE</p></h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for books...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+    </header>
+    <nav>
+        <a href="h.html">Home</a>
+        <a href="t.html">Books Store</a>
+        <a href="c.html">Cart</a>
+        <a href="r.html">Registration</a>
+        <a href="l.html">Login</a>
+    </nav>
+    <section class="book-list">
+        <div class="book-item">
+            <img src="A.jpg" alt="Modern CSS">
+            <h3>Modern CSS</h3>
+            <p>Author: Joe Attardi</p>
+            <p>Price: $19.99</p>
+            <button onclick="addToCart('Modern CSS', 19.99, 'Joe Attardi', 'A.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="B.jpg" alt="Let Us C">
+            <h3>Let Us C</h3>
+            <p>Author: Yasavan Kanetkar</p>
+            <p>Price: $24.99</p>
+            <button onclick="addToCart('Let Us C', 24.99, 'Yasavan Kanetkar', 'B.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="C.jpg" alt="Engineering Mathematics 2">
+            <h3>Engineering Mathematics 2</h3>
+            <p>Author: P. Sudh & P. Salthi</p>
+            <p>Price: $14.99</p>
+            <button onclick="addToCart('Engineering Mathematics 2', 14.99, 'P. Sudh & P. Salthi', 'C.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="D.jpg" alt="Mastering HTML">
+            <h3>Mastering HTML</h3>
+            <p>Author: Laura Lemay</p>
+            <p>Price: $30.99</p>
+            <button onclick="addToCart('Mastering HTML', 30.99, 'Laura Lemay', 'A.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="E.jpg" alt="Python Programing">
+            <h3>Python Programing</h3>
+            <p>Author: Mani Deepak Coudhary</p>
+            <p>Price: $55.99</p>
+            <button onclick="addToCart('Python Programing', 55.99, 'Mani Deepak Coudhary', 'B.jpg')">Add to Cart</button>
+        </div>
+        <div class="book-item">
+            <img src="F.jpg" alt="Artificial Intelligence">
+            <h3>Artificial Intelligence</h3>
+            <p>Author: Charu C Aggrwal</p>
+            <p>Price: $16.90</p>
+            <button onclick="addToCart('Artificial Intelligence', 16.90, 'Charu C Aggrwal', 'F.jpg')">Add to Cart</button>
+        </div>
+    </section>
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function addToCart(bookName, bookPrice, bookAuthor, bookImage) {
+            const alreadyInCart = cart.some(item => item.name === bookName);
+            if (alreadyInCart) {
+                alert('This product is already added to your cart.');
+                return;
+            }
+            cart.push({ 
+                name: bookName, 
+                price: bookPrice, 
+                author: bookAuthor, 
+                image: bookImage 
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${bookName} has been added to your cart!`);
+        }
+        function searchBooks() {
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery) {
+                alert('Searching for: ' + searchQuery);
+            } else {
+                alert('Please enter a book title to search.');
+            }
+        }
+    </script>
+</body>
+</html>

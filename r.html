@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+         font-family: "Times New Roman", Times, serif;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         margin: 0;
+         background-image: url('G.jpg');
+         background-size: cover; /* Ensures the background image covers the full viewport */
+         background-position: center; /* Centers the background image */
+         background-attachment: fixed; /* Keeps the background fixed while scrolling */
+         }
+        .form-container {
+            padding: 10px 20px;
+            width: 400px;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            background: rgba(49, 49, 49, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            color: black;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            font-size: 13px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.1); /* 90% transparent white */
+        }
+        textarea {
+            resize: none;
+        }
+        .dob-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+        .dob-container select {
+            width: calc(33.33% - 5px);
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: black;
+        }
+        .link-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div id="passwordError" class="error"></div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">E-mail ID</label>
+                <input type="email" id="email" name="email" required>
+                <div id="emailError" class="error"></div>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="Gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <!-- Language -->
+            <div class="form-group">
+                <label for="languages">Languages</label>
+                <select id="languages" name="languages" multiple required>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="Marathi">Marathi</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Gujarati">Gujarati</option>
+                    <option value="Punjabi">Punjabi</option>
+                    <option value="Urdu">Urdu</option>
+                    <option value="Kannada">Kannada</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Odia">Odia</option>
+                </select>
+            </div>
+
+            <!-- State (India) -->
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <div class="dob-container">
+                    <select name="dob_day" required>
+                        <option value="">Day</option>
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <select name="dob_month" required>
+                        <option value="">Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select name="dob_year" required>
+                        <option value="">Year</option>
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            for (let i = currentYear - 100; i <= currentYear; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Home and Login Buttons -->
+        <div class="link-buttons">
+            <h>Have an account? <a href="l.html">Login</a></h>
+            <a href="h.html">Home</a>
+        </div>
+    </div>
+
+    <script>

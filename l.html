@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 5px;
+            background-image: url("G.jpg");
+            background-size: cover;
+            background-position: justify;
+        }
+        .login-container {
+            padding: 20px 30px;
+            width: 300px;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            background: rgba(49, 49, 49, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            color: black;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color:black ;
+        }
+        .input-field:focus {
+            border-color: black;
+            outline: none;
+        }
+        .login-btn {
+            padding: 11px 20px;
+            border: none;
+            background-color: green;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 107%;
+            transition: background-color 0.5s ease;
+        }
+        .login-btn:hover {
+            background-color:black ;
+        }
+        .login-container h5 {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .login-container a {
+            color: green;
+            text-decoration: none;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="email" class="input-field" id="email" placeholder="E-mail" required>
+        <div id="emailError" class="error"></div>
+        <input type="password" class="input-field" id="password" placeholder="Password" required>
+        <div id="passwordError" class="error"></div>
+        <button class="login-btn" id="loginBtn">Login</button>
+        <h5>Don't have an account? <a href="r.html">Register</a></h5>
+        <div style="text-align: center; margin-top: 10px;">
+            <a href="h.html">Home</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent form submission
+            
+            // Input fields
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Error display elements
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+
+            // Reset errors
+            emailError.textContent = "";
+            passwordError.textContent = "";
+
+            // Email validation (using regex)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                return;
+            }
+
+            // Password validation (minimum 8 characters, at least one letter and one symbol)
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$/;
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, include a letter and a symbol.";
+                return;
+            }
+
+            // If validations pass
+            alert("Login successful!");
+        });
+    </script>
+</body>
+</html>
